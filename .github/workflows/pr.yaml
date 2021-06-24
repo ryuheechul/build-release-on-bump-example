@@ -15,11 +15,9 @@ jobs:
           node-version: '14.17.x'
 
       - name: npm install
-        if: steps.check.outputs.changed == 'true'
         run: npm install
         working-directory: non-root-path
 
       - name: npm run build
-        if: steps.check.outputs.changed == 'true'
         run: npm run build
         working-directory: non-root-path
