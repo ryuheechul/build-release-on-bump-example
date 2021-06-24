@@ -9,15 +9,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
           node-version: '14.17.x'
+
+      - name: Check if version has been updated
+        id: check
+        uses: EndBug/version-check@v1
+
+      - name: Log when changed
+        if: steps.check.outputs.changed == 'true'
+        run: 'echo "Version change found in commit ${{ steps.check.outputs.commit }}! New version: ${{ steps.check.outputs.version }} (${{ steps.check.outputs.type }})"'
+
       - name: npm install
+        if: steps.check.outputs.changed == 'true'
         run: npm install
+
       - name: npm run build
+        if: steps.check.outputs.changed == 'true'
         run: npm run build
+
       - name: Pushes to "another" repository
+        if: steps.check.outputs.changed == 'true'
         id: push_directory
         uses: cpina/github-action-push-to-another-repository@main
         env:
