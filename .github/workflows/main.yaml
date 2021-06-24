@@ -42,5 +42,5 @@ jobs:
           destination-github-username: 'ryuheechul'
           destination-repository-name: 'build-release-on-bump-example'
           target-branch: release
-          commit-message: commit to release
+          commit-message: Release ${{ steps.check.outputs.version }}
           user-email: ryuhcii@gmail.com
