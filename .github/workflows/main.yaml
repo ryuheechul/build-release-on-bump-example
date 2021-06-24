@@ -29,10 +29,12 @@ jobs:
       - name: npm install
         if: steps.check.outputs.changed == 'true'
         run: npm install
+        working-directory: non-root-path
 
       - name: npm run build
         if: steps.check.outputs.changed == 'true'
         run: npm run build
+        working-directory: non-root-path
 
       - name: Pushes to "another" repository
         if: steps.check.outputs.changed == 'true'
@@ -41,7 +43,7 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source-directory: 'public'
+          source-directory: 'non-root-path/public'
           destination-github-username: 'ryuheechul'
           destination-repository-name: 'build-release-on-bump-example'
           target-branch: release
