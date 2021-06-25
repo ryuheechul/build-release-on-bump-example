@@ -5,7 +5,7 @@
 <main>
 	<h1>Hello {name}!</h1>
 	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-	<p>version: 1.0.8</p>
+	<p>version: 1.0.7</p>
 </main>
 
 <style>
