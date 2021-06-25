@@ -22,6 +22,7 @@ jobs:
         with:
           file-name: non-root-path/package.json
           diff-search: true
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Log when changed
         if: steps.check.outputs.changed == 'true'
